@@ -40,7 +40,7 @@ client.on('message', message =>{
 
                 server.queue.shift();
 
-                server.dispatcher.on("finish", function(){
+                server.dispatcher.on("end", function(){
                     if(server.queue[0]){
                         play(connection, message);
                     }else{
@@ -76,6 +76,7 @@ client.on('message', message =>{
 
 
             if(!message.guild.voiceConnection) message.member.voice.channel.join().then(function(connection){
+                message.channel.send("Arrivo a suonare il mio magico flauto")
                 play(connection, message);
             })
 
