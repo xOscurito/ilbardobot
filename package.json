@@ -9,6 +9,8 @@
   "author": "nopane",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "opusscript": "0.0.8",
+    "ytdl-core": "^4.9.1"
   }
 }
