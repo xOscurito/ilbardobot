@@ -23,7 +23,7 @@ for(const file of commandFiles){
  
 client.once('ready', () => {
     console.log('Bot ora avviato');
-    client.user.setActivity("m!p");
+    client.user.setActivity("m!play = Flauto di Pan");
 });
  
 client.on('message', message =>{
