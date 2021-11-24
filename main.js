@@ -7,7 +7,8 @@ const ytdl = require("ytdl-core")
 
 const prefix = 'm!';
 const prefixx = 'M!';
- 
+var loop = false;
+
 var servers = {}; 
 
 client.commands = new Discord.Collection();
@@ -38,8 +39,8 @@ client.on('message', message =>{
                 var server = servers[message.guild.id];
                 
                 server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
-
-                server.queue.shift();
+                if(!loop)
+                    server.queue.shift();
 
                 server.dispatcher.on("finish", function(){
                     message.channel.send("canzone finita");
@@ -88,7 +89,16 @@ client.on('message', message =>{
         case 's':
             var server = servers[message.guild.id];
             if(server.dispatcher) server.dispatcher.end();
-
+            message.channel.send("Canzone balzata via! \*bestemmia in Gnomish\*")
+        break;
+        case 'loop':
+            if(loop){
+                loop=false;
+                message.channel.send("Ahhhh, mi ero proprio stancato di quella roba...")
+            }else{
+                loop=true;
+                message.channel.send("La canzone verra\' ripetuta per sempre! sempre se non mi rompo prima...")
+            }
         break;
     }
     
